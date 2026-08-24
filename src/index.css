@@ -33,4 +33,64 @@
   .section-subtitle {
     @apply mt-3 max-w-2xl text-base text-slate-500 sm:text-lg;
   }
+
+  .card {
+    @apply rounded-2xl border border-slate-200 bg-white shadow-card;
+  }
+
+  .toolbar-btn {
+    @apply inline-flex h-9 w-9 items-center justify-center rounded-xl border border-slate-200 bg-white text-navy-800 shadow-sm transition-colors hover:border-action hover:text-action focus:outline-none focus-visible:ring-2 focus-visible:ring-action;
+  }
+
+  .form-label {
+    @apply mb-1.5 block text-xs font-bold uppercase tracking-wide text-slate-400;
+  }
+
+  .form-input {
+    @apply w-full rounded-xl border border-slate-300 bg-white px-3.5 py-2.5 text-sm font-semibold text-navy-800 placeholder:font-normal placeholder:text-slate-400 transition-colors focus:border-action focus:outline-none focus:ring-2 focus:ring-action/20;
+  }
+
+  .table-th {
+    @apply px-4 py-3 text-left text-[11px] font-bold uppercase tracking-wide text-slate-400;
+  }
+
+  .table-td {
+    @apply px-4 py-3.5 text-sm font-medium text-slate-600;
+  }
+
+  .striped-block {
+    background-image: repeating-linear-gradient(
+      -45deg,
+      rgb(254 226 226) 0,
+      rgb(254 226 226) 4px,
+      rgb(255 255 255) 4px,
+      rgb(255 255 255) 8px
+    );
+    opacity: 0.55;
+  }
+}
+
+@layer utilities {
+  .scrollbar-none {
+    scrollbar-width: none;
+  }
+
+  .scrollbar-none::-webkit-scrollbar {
+    display: none;
+  }
+
+  .scroll-area {
+    scrollbar-width: thin;
+    scrollbar-color: #cbd5e1 transparent;
+  }
+
+  .scroll-area::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  .scroll-area::-webkit-scrollbar-thumb {
+    border-radius: 9999px;
+    background-color: #cbd5e1;
+  }
 }

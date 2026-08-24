@@ -1,0 +1,132 @@
+import { addDays } from '../lib/format';
+
+function ageFrom(birthDate) {
+  const birth = new Date(birthDate);
+  const now = new Date();
+  let age = now.getFullYear() - birth.getFullYear();
+  const monthDiff = now.getMonth() - birth.getMonth();
+  if (monthDiff < 0 || (monthDiff === 0 && now.getDate() < birth.getDate())) age -= 1;
+  return age;
+}
+
+const RAW_PATIENTS = [
+  {
+    id: 'pat-001',
+    firstName: 'María',
+    lastName: 'López',
+    birthDate: '1958-11-02',
+    status: 'activo',
+    dni: '12.789.456',
+    phone: '+54 9 11 6325-8847',
+    email: 'maria.lopez@gmail.com',
+    address: 'Virrey del Pino 2380, 3º A, CABA',
+    emergencyContact: { name: 'Jorge López (hijo)', phone: '+54 9 11 5540-1928' },
+    healthInsurance: 'OSDE 210',
+    lastVisitAt: addDays(new Date(), -14).toISOString(),
+    nextVisitAt: null,
+    notes: 'Hipertensa controlada. Prefiere turnos por la tarde.',
+  },
+  {
+    id: 'pat-002',
+    firstName: 'Carlos',
+    lastName: 'Pérez',
+    birthDate: '1970-05-21',
+    status: 'activo',
+    dni: '20.334.112',
+    phone: '+54 9 11 4412-9033',
+    email: 'carlosperez@outlook.com',
+    address: 'Monroe 1875, CABA',
+    emergencyContact: { name: 'Lucía Pérez', phone: '+54 9 11 6620-4471' },
+    healthInsurance: 'Swiss Medical',
+    lastVisitAt: addDays(new Date(), -30).toISOString(),
+    nextVisitAt: addDays(new Date(), 2).toISOString(),
+    notes: 'Seguimiento de colesterol y presión anual.',
+  },
+  {
+    id: 'pat-003',
+    firstName: 'Rosa',
+    lastName: 'Fernández',
+    birthDate: '1949-08-30',
+    status: 'activo',
+    dni: '8.992.331',
+    phone: '+54 9 11 2287-5566',
+    email: 'rosafernandez@yahoo.com.ar',
+    address: 'Ciudad de la Paz 2450, Vicente López',
+    emergencyContact: { name: 'Ana Fernández (hija)', phone: '+54 9 11 4778-2290' },
+    healthInsurance: 'IOMA',
+    lastVisitAt: addDays(new Date(), -7).toISOString(),
+    nextVisitAt: addDays(new Date(), 1).toISOString(),
+    notes: 'Movilidad reducida. Atención siempre a domicilio.',
+  },
+  {
+    id: 'pat-004',
+    firstName: 'Martín',
+    lastName: 'Rodríguez',
+    birthDate: '1992-01-15',
+    status: 'activo',
+    dni: '36.220.987',
+    phone: '+54 9 11 3390-7712',
+    email: 'martin.rodriguez@gmail.com',
+    address: 'Av. Corrientes 4820, CABA',
+    emergencyContact: { name: 'Sofía Rodríguez', phone: '+54 9 11 2256-8834' },
+    healthInsurance: 'Galeno',
+    lastVisitAt: addDays(new Date(), -3).toISOString(),
+    nextVisitAt: addDays(new Date(), 5).toISOString(),
+    notes: 'Consultas mayormente por e-consulta fuera de horario laboral.',
+  },
+  {
+    id: 'pat-005',
+    firstName: 'Elena',
+    lastName: 'Suárez',
+    birthDate: '1965-09-08',
+    status: 'inactivo',
+    dni: '17.884.220',
+    phone: '+54 9 11 5521-3390',
+    email: 'elena.suarez@gmail.com',
+    address: 'Juramento 2150, CABA',
+    emergencyContact: { name: 'Pedro Suárez', phone: '+54 9 11 6634-1109' },
+    healthInsurance: 'OSDE 310',
+    lastVisitAt: addDays(new Date(), -95).toISOString(),
+    nextVisitAt: null,
+    notes: 'Se mudó a Mar del Plata a mediados de año.',
+  },
+  {
+    id: 'pat-006',
+    firstName: 'Jorge',
+    lastName: 'Díaz',
+    birthDate: '1961-03-27',
+    status: 'activo',
+    dni: '14.550.118',
+    phone: '+54 9 11 7743-6620',
+    email: 'jorge.diaz@hotmail.com',
+    address: 'Superí 1290, CABA',
+    emergencyContact: { name: 'Marta Díaz', phone: '+54 9 11 8890-4456' },
+    healthInsurance: 'Medifé',
+    lastVisitAt: addDays(new Date(), -21).toISOString(),
+    nextVisitAt: addDays(new Date(), 3).toISOString(),
+    notes: 'Diabetes tipo 2. Control mensual de glucemia.',
+  },
+  {
+    id: 'pat-007',
+    firstName: 'Lucía',
+    lastName: 'Ferreira',
+    birthDate: '1998-12-04',
+    status: 'activo',
+    dni: '41.209.776',
+    phone: '+54 9 11 6614-2288',
+    email: 'lucia.ferreira@gmail.com',
+    address: 'Humboldt 1560, CABA',
+    emergencyContact: { name: 'Carolina Ferreira', phone: '+54 9 11 3378-9921' },
+    healthInsurance: 'Sin cobertura',
+    lastVisitAt: addDays(new Date(), -45).toISOString(),
+    nextVisitAt: addDays(new Date(), 6).toISOString(),
+    notes: 'Controles dermatológicos preventivos.',
+  },
+];
+
+export const PATIENTS = RAW_PATIENTS.map((patient) => ({
+  ...patient,
+  age: ageFrom(patient.birthDate),
+}));
+
+export const INITIAL_ACTIVE_PATIENTS = PATIENTS.filter((patient) => patient.status === 'activo').length;

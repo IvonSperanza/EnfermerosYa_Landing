@@ -1,0 +1,6 @@
+{
+  "rewrites": [
+    { "source": "/profesional", "destination": "/index.html" },
+    { "source": "/profesional/:path*", "destination": "/index.html" }
+  ]
+}
