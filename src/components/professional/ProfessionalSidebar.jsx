@@ -38,7 +38,7 @@ export default function ProfessionalSidebar({ collapsed, onToggleCollapsed, mobi
     <>
       <div className={cn('flex h-16 items-center border-b border-white/10 px-4 lg:px-5')}>
         <Link to="/" className="inline-flex items-center gap-2.5" aria-label="Ir al inicio de EnfermerosYa">
-          <img src="/logo.jpg" alt="" aria-hidden="true" className="h-9 w-9 shrink-0 rounded-xl object-cover shadow-sm" />
+          <img src="/logo.png" alt="" aria-hidden="true" className="h-9 w-9 shrink-0 rounded-xl object-cover shadow-sm" />
           <span className={cn('text-lg font-extrabold tracking-tight text-white', collapsed && 'lg:hidden')}>
             Enfermeros<span className="text-blue-300">Ya</span>
           </span>
