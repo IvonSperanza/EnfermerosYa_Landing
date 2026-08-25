@@ -22,10 +22,10 @@ export default function PreFooter() {
               Buscar profesional
             </a>
             <a
-              href="#equipamiento"
+              href="#econsultas"
               className="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-white/25 px-7 py-3 text-sm font-semibold text-white transition-colors hover:bg-white/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-navy-800 sm:w-auto"
             >
-              Ver equipamiento
+              Probar e-consulta
             </a>
           </div>
         </div>

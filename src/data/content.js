@@ -1,8 +1,6 @@
 import {
-  Accessibility,
   Activity,
   Bandage,
-  BedDouble,
   CalendarClock,
   ClipboardCheck,
   Clock,
@@ -12,7 +10,6 @@ import {
   FileCheck,
   FileText,
   FlaskConical,
-  Footprints,
   Headphones,
   Home,
   Instagram,
@@ -21,7 +18,6 @@ import {
   MapPin,
   MessageCircle,
   MoreHorizontal,
-  PersonStanding,
   Search,
   ShieldCheck,
   Stethoscope,
@@ -34,7 +30,6 @@ export const NAV_LINKS = [
   { label: 'Inicio', href: '#inicio' },
   { label: 'Buscar profesionales', href: '#profesionales' },
   { label: 'Servicios', href: '#servicios' },
-  { label: 'Equipamiento', href: '#equipamiento' },
   { label: 'E-consultas', href: '#econsultas' },
   { label: 'Para profesionales', href: '#para-profesionales' },
   { label: 'Preguntas frecuentes', href: '#faq' },
@@ -61,13 +56,6 @@ export const QUICK_ACCESS = [
     description: 'Resolvé tus dudas por chat con profesionales las 24hs.',
     href: '#econsultas',
     iconClass: 'bg-violet-50 text-violet-600',
-  },
-  {
-    icon: Accessibility,
-    title: 'Alquilar equipamiento',
-    description: 'Sillas de ruedas, camas ortopédicas y más, por día o semana.',
-    href: '#equipamiento',
-    iconClass: 'bg-amber-50 text-amber-600',
   },
 ];
 
@@ -152,41 +140,6 @@ export const PROFESSIONALS = [
   },
 ];
 
-export const EQUIPMENT = [
-  {
-    id: 1,
-    icon: Accessibility,
-    name: 'Silla de ruedas estándar',
-    priceDay: '$3.500',
-    priceWeek: '$18.000',
-    available: true,
-  },
-  {
-    id: 2,
-    icon: BedDouble,
-    name: 'Cama ortopédica',
-    priceDay: '$8.900',
-    priceWeek: '$45.000',
-    available: true,
-  },
-  {
-    id: 3,
-    icon: Footprints,
-    name: 'Andador plegable',
-    priceDay: '$2.200',
-    priceWeek: '$11.000',
-    available: false,
-  },
-  {
-    id: 4,
-    icon: PersonStanding,
-    name: 'Muletas regulables',
-    priceDay: '$1.500',
-    priceWeek: '$7.500',
-    available: true,
-  },
-];
-
 export const E_CONSULT_BENEFITS = [
   'Disponible las 24hs',
   'Profesionales matriculados',
@@ -267,7 +220,7 @@ export const METRICS = [
   { value: '+1.200', label: 'Profesionales' },
   { value: '+8.500', label: 'Turnos realizados' },
   { value: '4.9', label: 'Calificación promedio' },
-  { value: '+300', label: 'Equipos disponibles' },
+  { value: '24/7', label: 'Disponibilidad' },
 ];
 
 export const PRO_BENEFITS = [
@@ -299,11 +252,6 @@ export const FAQS = [
       'Trabajamos con Mercado Pago: tarjetas de crédito y débito, dinero en cuenta y transferencias. El pago se retiene de forma segura y se libera al profesional una vez completada la atención.',
   },
   {
-    question: '¿Puedo alquilar equipamiento médico por semana?',
-    answer:
-      'Sí. El equipamiento se alquila por día o por semana, con entrega y retiro a domicilio. Cada publicación indica disponibilidad, precio y condiciones de uso.',
-  },
-  {
     question: '¿En qué ciudades tienen cobertura?',
     answer:
       'Operamos en las principales ciudades de Argentina, con cobertura creciente de barrios y zonas de gran Buenos Aires. Podés activar "Usar mi ubicación" para ver los profesionales disponibles cerca tuyo.',
@@ -319,7 +267,7 @@ export const TRUST_SEALS = [
 export const FOOTER_COLUMNS = [
   {
     title: 'Plataforma',
-    links: ['Buscar profesionales', 'Servicios de salud', 'Alquiler de equipamiento', 'E-consultas'],
+    links: ['Buscar profesionales', 'Servicios de salud', 'E-consultas'],
   },
   {
     title: 'Profesionales',

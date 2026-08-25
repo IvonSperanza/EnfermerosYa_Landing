@@ -11,7 +11,7 @@ export default function Footer() {
           <Logo tone="dark" />
           <p className="mt-5 text-sm leading-relaxed text-blue-200/80">
             La forma más simple de encontrar profesionales de la salud verificados cerca tuyo.
-            Atención a domicilio, equipamiento y e-consultas en un solo lugar.
+            Atención a domicilio y e-consultas en un solo lugar.
           </p>
 
           <div className="mt-6 flex items-center gap-3">

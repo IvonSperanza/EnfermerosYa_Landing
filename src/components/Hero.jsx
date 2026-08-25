@@ -40,8 +40,7 @@ export default function Hero() {
 
           <p className="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-blue-100/90 sm:text-lg">
             Conectamos pacientes con enfermeros, kinesiólogos y profesionales de la salud
-            matriculados. Atención a domicilio, alquiler de equipamiento médico y e-consultas,
-            todo en un solo lugar.
+            matriculados. Atención a domicilio y e-consultas, todo en un solo lugar.
           </p>
         </div>
       </div>
