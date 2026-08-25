@@ -1,4 +1,4 @@
-import { HeartPulse, Home, Users, CalendarDays, Clock4, MessagesSquare, MessageSquareText, CreditCard, UserRound, Settings, LogOut, PanelLeftClose, PanelLeftOpen, X } from 'lucide-react';
+import { Home, Users, CalendarDays, Clock4, MessagesSquare, MessageSquareText, CreditCard, UserRound, Settings, LogOut, PanelLeftClose, PanelLeftOpen, X } from 'lucide-react';
 import { cn } from '../../lib/utils';
 import { Link, useRouter } from '../../router/Router';
 import { useAuth } from '../../context/AuthContext';
@@ -38,9 +38,7 @@ export default function ProfessionalSidebar({ collapsed, onToggleCollapsed, mobi
     <>
       <div className={cn('flex h-16 items-center border-b border-white/10 px-4 lg:px-5')}>
         <Link to="/" className="inline-flex items-center gap-2.5" aria-label="Ir al inicio de EnfermerosYa">
-          <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-action shadow-sm">
-            <HeartPulse className="h-5 w-5 text-white" strokeWidth={2.2} />
-          </span>
+          <img src="/logo.jpg" alt="" aria-hidden="true" className="h-9 w-9 shrink-0 rounded-xl object-cover shadow-sm" />
           <span className={cn('text-lg font-extrabold tracking-tight text-white', collapsed && 'lg:hidden')}>
             Enfermeros<span className="text-blue-300">Ya</span>
           </span>
