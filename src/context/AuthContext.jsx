@@ -7,6 +7,7 @@ const AuthContext = createContext(null);
 const CURRENT_USER = {
   id: PROFESSIONAL.id,
   role: 'healthcare_professional',
+  roles: ['healthcare_professional', 'patient'],
   name: `${PROFESSIONAL.firstName} ${PROFESSIONAL.lastName}`,
 };
 
@@ -31,17 +32,18 @@ export function useAuth() {
   return context;
 }
 
-export function RequireRole({ role, children }) {
+export function RequireRole({ role, message, children }) {
   const { user } = useAuth();
   const { navigate } = useRouter();
 
-  if (!user || user.role !== role) {
+  const allowedRoles = user?.roles || (user ? [user.role] : []);
+  if (!user || !allowedRoles.includes(role)) {
     return (
       <div className="flex min-h-screen items-center justify-center bg-slate-50 px-4">
         <div className="card max-w-md p-8 text-center">
           <h1 className="text-xl font-extrabold text-navy-800">Acceso restringido</h1>
           <p className="mt-2 text-sm font-medium text-slate-500">
-            Esta sección es exclusiva para profesionales de la salud con sesión iniciada.
+            {message || 'Esta sección es exclusiva para profesionales de la salud con sesión iniciada.'}
           </p>
           <button type="button" onClick={() => navigate('/')} className="btn-primary mt-6 w-full">
             Volver al inicio

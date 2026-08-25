@@ -2,6 +2,7 @@ import { AuthProvider, RequireRole } from './context/AuthContext';
 import { ProfessionalProvider } from './context/ProfessionalContext';
 import { ToastProvider } from './context/ToastContext';
 import ProfessionalLayout from './components/professional/ProfessionalLayout';
+import ClientLayout from './components/client/ClientLayout';
 import { Navigate, Link, RouterProvider, matchPath, useRouter } from './router/Router';
 import LandingPage from './pages/LandingPage';
 import DashboardPage from './pages/professional/DashboardPage';
@@ -15,6 +16,21 @@ import PaymentsPage from './pages/professional/PaymentsPage';
 import ProfilePage from './pages/professional/ProfilePage';
 import SettingsPage from './pages/professional/SettingsPage';
 import { PROFESSIONAL } from './data/professional';
+import ClientDashboardPage from './pages/client/DashboardPage';
+import ProfessionalsPage from './pages/client/ProfessionalsPage';
+import ProfessionalProfilePage from './pages/client/ProfessionalProfilePage';
+import SpecialtiesPage from './pages/client/SpecialtiesPage';
+import ServicesPage from './pages/client/ServicesPage';
+import BookingsPage from './pages/client/BookingsPage';
+import BookingDetailPage from './pages/client/BookingDetailPage';
+import BookingFlowPage from './pages/client/BookingFlowPage';
+import EConsultsListPage from './pages/client/EConsultsPage';
+import EConsultRoomPage from './pages/client/EConsultRoomPage';
+import ClientMessagesPage from './pages/client/ClientMessagesPage';
+import ClientPaymentsPage from './pages/client/PaymentsPage';
+import HistoryPage from './pages/client/HistoryPage';
+import ClientProfilePage from './pages/client/ProfilePage';
+import ClientSettingsPage from './pages/client/SettingsPage';
 
 const PORTAL_ROUTES = [
   { path: '/profesional/dashboard', render: () => <DashboardPage /> },
@@ -29,7 +45,25 @@ const PORTAL_ROUTES = [
   { path: '/profesional/configuracion', render: () => <SettingsPage /> },
 ];
 
-function NotFoundPage() {
+const CLIENT_ROUTES = [
+  { path: '/cliente/dashboard', render: () => <ClientDashboardPage /> },
+  { path: '/cliente/reservar', render: () => <BookingFlowPage /> },
+  { path: '/cliente/reservas/:id', render: ({ params }) => <BookingDetailPage bookingId={params.id} /> },
+  { path: '/cliente/reservas', render: () => <BookingsPage /> },
+  { path: '/cliente/profesionales/:id', render: ({ params }) => <ProfessionalProfilePage professionalId={params.id} /> },
+  { path: '/cliente/profesionales', render: () => <ProfessionalsPage /> },
+  { path: '/cliente/especialidades', render: () => <SpecialtiesPage /> },
+  { path: '/cliente/servicios', render: () => <ServicesPage /> },
+  { path: '/cliente/e-consultas/:professionalId', render: ({ params }) => <EConsultRoomPage professionalId={params.professionalId} /> },
+  { path: '/cliente/e-consultas', render: () => <EConsultsListPage /> },
+  { path: '/cliente/mensajes', render: () => <ClientMessagesPage /> },
+  { path: '/cliente/pagos', render: () => <ClientPaymentsPage /> },
+  { path: '/cliente/historial', render: () => <HistoryPage /> },
+  { path: '/cliente/perfil', render: () => <ClientProfilePage /> },
+  { path: '/cliente/configuracion', render: () => <ClientSettingsPage /> },
+];
+
+function NotFoundPage({ homeTo = '/profesional/dashboard' }) {
   return (
     <div className="flex min-h-[60vh] flex-col items-center justify-center rounded-2xl border border-dashed border-slate-200 bg-white px-6 text-center">
       <p className="text-5xl font-extrabold text-action">404</p>
@@ -37,7 +71,7 @@ function NotFoundPage() {
       <p className="mt-1.5 max-w-sm text-sm font-medium text-slate-500">
         La dirección que buscás no existe o fue movida.
       </p>
-      <Link to="/profesional/dashboard" className="btn-primary mt-6">
+      <Link to={homeTo} className="btn-primary mt-6">
         Volver al inicio
       </Link>
     </div>
@@ -65,6 +99,27 @@ function PortalRouter() {
   );
 }
 
+function ClientPortalRouter() {
+  const { pathname } = useRouter();
+
+  if (pathname === '/cliente' || pathname === '/cliente/') {
+    return <Navigate to="/cliente/dashboard" />;
+  }
+
+  for (const route of CLIENT_ROUTES) {
+    const match = matchPath(route.path, pathname);
+    if (match) {
+      return <ClientLayout>{route.render(match)}</ClientLayout>;
+    }
+  }
+
+  return (
+    <ClientLayout>
+      <NotFoundPage homeTo="/cliente/dashboard" />
+    </ClientLayout>
+  );
+}
+
 function AppRoutes() {
   const { pathname } = useRouter();
 
@@ -72,6 +127,14 @@ function AppRoutes() {
     return (
       <RequireRole role="healthcare_professional">
         <PortalRouter />
+      </RequireRole>
+    );
+  }
+
+  if (pathname.startsWith('/cliente')) {
+    return (
+      <RequireRole role="patient" message="Esta sección es exclusiva para pacientes con sesión iniciada.">
+        <ClientPortalRouter />
       </RequireRole>
     );
   }

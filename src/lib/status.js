@@ -58,3 +58,26 @@ export const DOCUMENT_KINDS = {
   informe: { label: 'Informe', badge: 'info' },
   indicacion: { label: 'Indicación', badge: 'success' },
 };
+
+export const CLIENT_PROFESSIONAL_STATUS = {
+  disponible: { label: 'Disponible', dotClass: 'bg-emerald-500' },
+  ocupado: { label: 'Ocupado', dotClass: 'bg-amber-500' },
+  offline: { label: 'Fuera de línea', dotClass: 'bg-slate-300 ring-1 ring-slate-400' },
+};
+
+export const CLIENT_PROFESSION_TYPES = {
+  medico: { label: 'Médico/a', article: 'Médico/a' },
+  enfermero: { label: 'Enfermero/a', article: 'Enfermero/a' },
+};
+
+export const AVAILABILITY_FILTERS = {
+  now: { label: 'Disponible ahora' },
+  today: { label: 'Disponible hoy' },
+  week: { label: 'Disponible esta semana' },
+};
+
+export const RATING_FILTERS = {
+  any: { label: 'Todas las calificaciones' },
+  4: { label: '4 estrellas o más' },
+  4.5: { label: '4,5 estrellas o más' },
+};

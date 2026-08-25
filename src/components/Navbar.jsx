@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { Menu, X } from 'lucide-react';
 import { NAV_LINKS } from '../data/content';
 import { cn } from '../lib/utils';
+import { Link } from '../router/Router';
 import Logo from './Logo';
 
 export default function Navbar() {
@@ -32,12 +33,12 @@ export default function Navbar() {
         </nav>
 
         <div className="hidden items-center gap-3 lg:flex">
-          <a
-            href="#inicio"
+          <Link
+            to="/cliente/dashboard"
             className="rounded-xl px-4 py-2.5 text-sm font-semibold text-navy-800 transition-colors hover:text-action"
           >
             Iniciar sesión
-          </a>
+          </Link>
           <a href="#profesionales" className="btn-primary px-4 py-2.5">
             Buscar profesional
           </a>
@@ -73,13 +74,13 @@ export default function Navbar() {
               </a>
             ))}
             <div className="mt-3 flex flex-col gap-2 border-t border-slate-100 pt-4 sm:flex-row">
-              <a
-                href="#inicio"
+              <Link
+                to="/cliente/dashboard"
                 onClick={() => setOpen(false)}
                 className="btn-secondary flex-1"
               >
                 Iniciar sesión
-              </a>
+              </Link>
               <a
                 href="#profesionales"
                 onClick={() => setOpen(false)}

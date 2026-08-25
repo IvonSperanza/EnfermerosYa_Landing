@@ -1,0 +1,11 @@
+export const SERVICES_CATALOG = [
+  { id: 'cat-consulta-medica', name: 'Consulta médica', description: 'Evaluación clínica completa con diagnóstico y tratamiento.', durationMinutes: 30, modalities: ['presencial', 'domicilio', 'online'], priceFrom: 12000, specialtyId: 'clinica-medica' },
+  { id: 'cat-consulta-enfermeria', name: 'Consulta de enfermería', description: 'Valoración de cuidados y plan de atención por enfermería profesional.', durationMinutes: 30, modalities: ['presencial', 'online'], priceFrom: 7000, specialtyId: 'enfermeria-general' },
+  { id: 'cat-cuidados-domiciliarios', name: 'Cuidados domiciliarios', description: 'Atención integral en tu hogar: higiene, movilización y acompañamiento.', durationMinutes: 60, modalities: ['domicilio'], priceFrom: 13000, specialtyId: 'cuidados-domiciliarios' },
+  { id: 'cat-signos-vitales', name: 'Control de signos vitales', description: 'Presión, glucemia, saturación y temperatura con registro informado.', durationMinutes: 20, modalities: ['domicilio'], priceFrom: 7500, specialtyId: 'enfermeria-general' },
+  { id: 'cat-curaciones', name: 'Curaciones', description: 'Limpieza y cura de heridas con material estéril descartable.', durationMinutes: 40, modalities: ['domicilio'], priceFrom: 11000, specialtyId: 'enfermeria-general' },
+  { id: 'cat-medicacion', name: 'Aplicación de medicación', description: 'Inyectables y administración de tratamientos indicados por tu médico.', durationMinutes: 20, modalities: ['domicilio'], priceFrom: 6500, specialtyId: 'enfermeria-general' },
+  { id: 'cat-seguimiento', name: 'Seguimiento de pacientes', description: 'Consultas periódicas de control para tratar patologías en curso.', durationMinutes: 30, modalities: ['presencial', 'online'], priceFrom: 18000, specialtyId: 'clinica-medica' },
+  { id: 'cat-econsulta', name: 'E-consulta', description: 'Consultá por chat a un profesional verificado y recibí una respuesta al instante.', durationMinutes: 20, modalities: ['online'], priceFrom: 4000, specialtyId: 'clinica-medica' },
+  { id: 'cat-atencion-domicilio', name: 'Atención a domicilio', description: 'El médico va hasta tu casa cuando no podés trasladarte al consultorio.', durationMinutes: 60, modalities: ['domicilio'], priceFrom: 15000, specialtyId: 'cuidados-domiciliarios' },
+];
