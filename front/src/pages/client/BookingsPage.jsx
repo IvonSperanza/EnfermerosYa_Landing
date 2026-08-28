@@ -51,10 +51,15 @@ export default function BookingsPage() {
 
   const handleCancel = async () => {
     if (!cancellingId) return;
-    await bookingsService.cancel(cancellingId);
-    setBookings((current) => current.map((booking) => (booking.id === cancellingId ? { ...booking, status: 'cancelada', cancelledBy: 'paciente' } : booking)));
-    setCancellingId(null);
-    toast.success('La reserva fue cancelada. Si habías pagado, el reembolso queda en curso.');
+    try {
+      await bookingsService.cancel(cancellingId);
+      setBookings((current) => current.map((booking) => (booking.id === cancellingId ? { ...booking, status: 'cancelada', cancelledBy: 'paciente' } : booking)));
+      setCancellingId(null);
+      toast.success('La reserva fue cancelada. Si habías pagado, el reembolso queda en curso.');
+    } catch {
+      setCancellingId(null);
+      toast.error('No pudimos cancelar la reserva. Probá nuevamente.');
+    }
   };
 
   if (loading && !error) return <PageLoader />;

@@ -50,7 +50,7 @@ export default function BookingFlowPage() {
   const [exitConfirmOpen, setExitConfirmOpen] = useState(false);
 
   useEffect(() => {
-    catalogService.listProfessionals().then(setProfessionals);
+    catalogService.listProfessionals().then(setProfessionals).catch(() => toast.error('No pudimos cargar los profesionales. Verificá tu conexión.'));
   }, []);
 
   useEffect(() => {
@@ -63,7 +63,7 @@ export default function BookingFlowPage() {
         }
         return { ...current, dateIso: '', time: '' };
       });
-    });
+    }).catch(() => toast.error('No pudimos cargar la disponibilidad en este momento.'));
   }, [selection.professionalId, professionalsMap]);
 
   const professional = selection.professionalId ? professionalsMap[selection.professionalId] : null;

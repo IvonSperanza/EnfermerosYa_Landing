@@ -51,9 +51,14 @@ export default function BookingDetailPage({ bookingId }) {
     && now >= startsAt.getTime() - ENTRY_WINDOW_MINUTES * 60_000;
 
   const handleCancel = async () => {
-    await bookingsService.cancel(booking.id);
-    setBooking((current) => ({ ...current, status: 'cancelada', cancelledBy: 'paciente' }));
-    toast.success('La reserva fue cancelada.');
+    try {
+      await bookingsService.cancel(booking.id);
+      setBooking((current) => ({ ...current, status: 'cancelada', cancelledBy: 'paciente' }));
+      toast.success('La reserva fue cancelada.');
+    } catch {
+      setCancelOpen(false);
+      toast.error('No pudimos cancelar la reserva. Probá nuevamente.');
+    }
   };
 
   return (

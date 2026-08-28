@@ -8,6 +8,8 @@ export default function useProfessionalLookup() {
     let active = true;
     catalogService.listProfessionals().then((items) => {
       if (active) setMap(Object.fromEntries(items.map((professional) => [professional.id, professional])));
+    }).catch(() => {
+      /* lookup es opcional: si falla, las páginas muestran fallbacks */
     });
     return () => {
       active = false;

@@ -20,7 +20,8 @@ const NAV_ITEMS = [
 
 export default function ClientSidebar({ collapsed, onToggleCollapsed, mobileOpen, onCloseMobile }) {
   const { pathname, navigate } = useRouter();
-  const { logout } = useAuth();
+  const { logout, user } = useAuth();
+  const userName = user?.name || 'Paciente';
 
   const isActive = (item) =>
     item.exact ? pathname === item.path : pathname === item.path || pathname.startsWith(`${item.path}/`);
@@ -85,10 +86,10 @@ export default function ClientSidebar({ collapsed, onToggleCollapsed, mobileOpen
             collapsed && 'lg:justify-center lg:bg-transparent lg:p-0',
           )}
         >
-          <Avatar name="María López" size="md" />
+          <Avatar name={userName} size="md" />
           {!collapsed && (
             <div className="min-w-0 flex-1">
-              <p className="truncate text-sm font-bold text-white">María López</p>
+              <p className="truncate text-sm font-bold text-white">{userName}</p>
               <p className="mt-1 inline-flex items-center gap-1.5 rounded-full bg-emerald-500/15 px-2 py-0.5 text-[11px] font-bold text-emerald-300">
                 <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" aria-hidden="true" />
                 Cuenta activa

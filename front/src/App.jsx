@@ -5,6 +5,9 @@ import ProfessionalLayout from './components/professional/ProfessionalLayout';
 import ClientLayout from './components/client/ClientLayout';
 import { Navigate, Link, RouterProvider, matchPath, useRouter } from './router/Router';
 import LandingPage from './pages/LandingPage';
+import LoginPage from './pages/LoginPage';
+import ProfessionalLoginPage from './pages/ProfessionalLoginPage';
+import RegisterPage from './pages/RegisterPage';
 import DashboardPage from './pages/professional/DashboardPage';
 import PatientsPage from './pages/professional/PatientsPage';
 import PatientDetailPage from './pages/professional/PatientDetailPage';
@@ -123,6 +126,10 @@ function ClientPortalRouter() {
 function AppRoutes() {
   const { pathname } = useRouter();
 
+  if (pathname === '/profesional/login' || pathname === '/profesional/login/') {
+    return <ProfessionalLoginPage />;
+  }
+
   if (pathname.startsWith('/profesional')) {
     return (
       <RequireRole role="healthcare_professional">
@@ -137,6 +144,14 @@ function AppRoutes() {
         <ClientPortalRouter />
       </RequireRole>
     );
+  }
+
+  if (pathname === '/ingresar' || pathname === '/ingresar/') {
+    return <LoginPage />;
+  }
+
+  if (pathname === '/registrarse' || pathname === '/registrarse/') {
+    return <RegisterPage />;
   }
 
   return <LandingPage />;
