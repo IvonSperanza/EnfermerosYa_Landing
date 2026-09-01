@@ -34,7 +34,7 @@ export default function Navbar() {
 
         <div className="hidden items-center gap-3 lg:flex">
           <Link
-            to="/cliente/dashboard"
+            to="/ingresar"
             className="rounded-xl px-4 py-2.5 text-sm font-semibold text-navy-800 transition-colors hover:text-action"
           >
             Iniciar sesión
@@ -75,7 +75,7 @@ export default function Navbar() {
             ))}
             <div className="mt-3 flex flex-col gap-2 border-t border-slate-100 pt-4 sm:flex-row">
               <Link
-                to="/cliente/dashboard"
+                to="/ingresar"
                 onClick={() => setOpen(false)}
                 className="btn-secondary flex-1"
               >

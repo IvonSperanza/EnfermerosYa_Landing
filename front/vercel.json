@@ -3,6 +3,9 @@
     { "source": "/profesional", "destination": "/index.html" },
     { "source": "/profesional/:path*", "destination": "/index.html" },
     { "source": "/cliente", "destination": "/index.html" },
-    { "source": "/cliente/:path*", "destination": "/index.html" }
+    { "source": "/cliente/:path*", "destination": "/index.html" },
+    { "source": "/ingresar", "destination": "/index.html" },
+    { "source": "/ingresar/:path*", "destination": "/index.html" },
+    { "source": "/registrarse", "destination": "/index.html" }
   ]
 }
