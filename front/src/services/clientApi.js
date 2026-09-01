@@ -4,7 +4,9 @@
 import { SERVICES_CATALOG } from '../data/servicesCatalog';
 import { dayBoundary, addDays } from '../lib/format';
 
-const API_BASE = '/api';
+// En producción apuntamos a la URL del backend en Vercel (VITE_API_URL).
+// En desarrollo local usa el proxy /api del Vite.
+const API_BASE = import.meta.env.VITE_API_URL || '/api';
 const REQUEST_TIMEOUT_MS = 15000;
 
 export class ApiError extends Error {
