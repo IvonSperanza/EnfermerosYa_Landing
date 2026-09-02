@@ -38,7 +38,8 @@ function getUserWithAvailabilities(user) {
 }
 
 async function authRequest(path, options = {}) {
-  const API_BASE = import.meta.env.VITE_API_URL || '/api';
+  const configured = import.meta.env.VITE_API_URL;
+  const API_BASE = configured ? `${configured}/api` : '/api';
   const response = await fetch(`${API_BASE}/auth${path}`, {
     headers: { 'Content-Type': 'application/json', ...(options.headers || {}) },
     ...options,
